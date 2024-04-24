@@ -1,1 +1,14 @@
-<p>header works!</p>
+<header class="topnavbar">
+    <section class="topnavbar__titles">
+        <h2>KEEP~HABITS</h2>
+
+        <h1>HABITS</h1>
+    </section>
+
+
+    <section class="topnavbar__actions">
+        <input #newHabitInput type="text" placeholder="Add new habit" />
+        <button (click)="addHabit(newHabitInput.value); newHabitInput.value=''"> <span class="plus">+</span> Add
+            Habit</button>
+    </section>
+</header>

@@ -5,8 +5,13 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-
+  addHabit(habitName: string) {
+    const newHabit: any = { name: habitName, days: [] };
+    for (let i = 1; i <= 30; i++) {
+      newHabit.days.push({ day: i, completed: false });
+    }
+  }
 }

@@ -1,0 +1,78 @@
+.topnavbar {
+  width: auto;
+  height: 80px;
+  padding: 1rem;
+
+  // background: rgba(247, 210, 44, 0.288);
+  background: rgba(245, 245, 245, 0.527);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 425px;
+
+    h2 {
+      font-family: "Archivo Black", sans-serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 800;
+      font-size: 34px;
+    }
+  }
+
+  &__actions {
+    width: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    input {
+      border: none;
+      height: 32px;
+      padding: 2px 14px 2px 14px;
+      outline: 0;
+    }
+
+    button {
+      background: black;
+      color: white;
+
+      height: 32px;
+      padding: 6px 20px 6px 20px;
+      font-weight: 600;
+
+      &:hover {
+        background: white;
+        border: black 2px solid;
+        color: black;
+        cursor: pointer;
+      }
+    }
+    .plus {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    &:active .plus {
+      animation: spin 0.8s ease-in-out forwards;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
