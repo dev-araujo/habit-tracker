@@ -1,0 +1,18 @@
+<!-- habit-tracker.component.html -->
+<div>
+    <input #newHabitInput type="text" placeholder="Add new habit" />
+    <button (click)="addHabit(newHabitInput.value); newHabitInput.value=''">
+        Add Habit
+    </button>
+</div>
+
+<div *ngFor="let habit of habits; let h = index">
+    <div>{{ habit.name }}</div>
+    <div class="day-container">
+        <div *ngFor="let day of habit.days; let d = index" class="day"
+            [ngStyle]="{'background-color': day.completed ? '#000' : '#fff', 'color': day.completed ? '#fff' : '#000'}"
+            (click)="toggleDayStatus(habit, day)">
+            {{ day.day }}
+        </div>
+    </div>
+</div>
