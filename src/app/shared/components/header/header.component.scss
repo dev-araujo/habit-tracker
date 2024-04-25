@@ -3,8 +3,7 @@
   height: 80px;
   padding: 1rem;
 
-  // background: rgba(247, 210, 44, 0.288);
-  background: rgba(245, 245, 245, 0.527);
+  background: rgba(245, 206, 30, 0.11);
 
   display: flex;
   justify-content: space-between;
@@ -14,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
-    width: 425px;
+    width: 800px;
 
     h2 {
       font-family: "Archivo Black", sans-serif;
@@ -35,7 +34,7 @@
     justify-content: space-around;
 
     input {
-      border: none;
+      border: 0.5px solid rgba(0, 0, 0, 0.5);
       height: 32px;
       padding: 2px 14px 2px 14px;
       outline: 0;
@@ -44,14 +43,14 @@
     button {
       background: black;
       color: white;
+      border: black 2px solid;
 
-      height: 32px;
+      height: 36px;
       padding: 6px 20px 6px 20px;
       font-weight: 600;
 
       &:hover {
         background: white;
-        border: black 2px solid;
         color: black;
         cursor: pointer;
       }
