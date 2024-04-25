@@ -40,6 +40,14 @@
       outline: 0;
     }
 
+    .placeholder-red::placeholder {
+      color: rgba(219, 56, 56, 0.911);
+    }
+
+    .placeholder-blue::placeholder {
+      color: auto;
+    }
+
     button {
       background: black;
       color: white;
