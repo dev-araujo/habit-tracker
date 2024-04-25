@@ -1,11 +1,3 @@
-<!-- habit-tracker.component.html -->
-<div>
-    <input #newHabitInput type="text" placeholder="Add new habit" />
-    <button (click)="addHabit(newHabitInput.value); newHabitInput.value=''">
-        Add Habit
-    </button>
-</div>
-
 <div *ngFor="let habit of habits; let h = index">
     <div>{{ habit.name }}</div>
     <div class="day-container">

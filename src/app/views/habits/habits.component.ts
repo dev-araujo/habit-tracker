@@ -1,5 +1,7 @@
 import { NgFor, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
+import { ServiceService } from '../../service/service.service';
+import { Habit } from '../../models/interfaces';
 
 @Component({
   selector: 'app-habits',
@@ -11,8 +13,17 @@ import { Component } from '@angular/core';
 export class HabitsComponent {
   habits: any[] = [];
 
+  constructor(private service: ServiceService) {}
+
   ngOnInit() {
     this.loadHabitData();
+    this.getNewHabit();
+  }
+
+  getNewHabit() {
+    this.service.habitShared$.subscribe((habit: Habit) => {
+      this.addHabit(habit);
+    });
   }
 
   loadHabitData() {
@@ -22,11 +33,7 @@ export class HabitsComponent {
     }
   }
 
-  addHabit(habitName: string) {
-    const newHabit: any = { name: habitName, days: [] };
-    for (let i = 1; i <= 30; i++) {
-      newHabit.days.push({ day: i, completed: false });
-    }
+  addHabit(newHabit: Habit) {
     this.habits.push(newHabit);
     this.saveHabitData();
   }
