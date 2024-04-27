@@ -1,44 +1,42 @@
-/* habit-tracker.component.css */
-.habit-tracker {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-}
-
-.habit {
-  border-bottom: 1px solid #000; /* Linha horizontal */
-}
-
-.habit-name {
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  text-align: center;
-  min-width: 20px; /* Ajuste conforme necessário */
-  margin-right: 10px;
-  border-right: 1px solid #000; /* Linha vertical */
-}
-
-.day-container {
-  display: flex;
-  padding-bottom: 10px;
-}
-
-.day {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin: 5px;
+.habits {
   display: flex;
   justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
+  font-family: "Montserrat", sans-serif;
 
-input {
-  margin: 10px 5px;
-  padding: 5px;
-}
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: -120px;
+  }
 
-button {
-  padding: 5px 10px;
+  &__habit {
+    height: 30px;
+    text-transform: uppercase;
+  }
+
+  &__day-container {
+    display: flex;
+    padding-bottom: 10px;
+  }
+
+  &__day {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  input {
+    margin: 10px 5px;
+    padding: 5px;
+  }
+
+  button {
+    padding: 5px 10px;
+  }
 }
