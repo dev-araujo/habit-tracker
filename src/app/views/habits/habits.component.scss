@@ -2,17 +2,19 @@
   display: flex;
   justify-content: center;
   font-family: "Montserrat", sans-serif;
+  width: 100vw;
 
   section {
     display: flex;
     align-items: center;
-    justify-content: start;
-    margin-left: -120px;
+    width: 1366px;
   }
 
   &__habit {
     height: 30px;
+    width: 180px;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   &__day-container {
