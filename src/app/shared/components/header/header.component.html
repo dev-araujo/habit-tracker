@@ -6,8 +6,8 @@
     </section>
 
     <section class="topnavbar__actions">
-        <input [ngClass]="{'placeholder-red': isError, 'placeholder-blue': !isError}" #newHabitInput type="text"
-            [placeholder]="placeholderContent" />
+        <input [ngClass]="{'placeholder-red': isError, 'placeholder-blue': !isError}" maxlength="18" #newHabitInput
+            type="text" [placeholder]="placeholderContent" />
 
         <button (click)="addHabit(newHabitInput.value); newHabitInput.value = ''">
             <span class="plus">+</span> Add Habit
