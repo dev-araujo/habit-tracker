@@ -1,4 +1,4 @@
-<div class="habits" *ngFor="let habit of habits; let h = index">
+<div class="habits" *ngFor="let habit of habits | async; let h = index">
     <section>
         <p class="habits__habit">{{ habit.name }}</p>
         <div class="habits__day-container">

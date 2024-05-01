@@ -1,17 +1,24 @@
-import { NgFor, NgStyle } from '@angular/common';
+import { NgFor, NgStyle, AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { ServiceService } from '../../service/service.service';
 import { Habit } from '../../models/interfaces';
+import { Observable } from 'rxjs';
+import {
+  HttpClient,
+  HttpClientModule,
+  provideHttpClient,
+} from '@angular/common/http';
 
 @Component({
   selector: 'app-habits',
   standalone: true,
-  imports: [NgStyle, NgFor],
+  imports: [NgStyle, NgFor, AsyncPipe],
+
   templateUrl: './habits.component.html',
   styleUrl: './habits.component.scss',
 })
 export class HabitsComponent {
-  habits: any[] = [];
+  habits = new Observable<Habit[]>();
 
   constructor(private service: ServiceService) {}
 
@@ -23,26 +30,30 @@ export class HabitsComponent {
   edit() {}
 
   getNewHabit() {
-    this.service.habitShared$.subscribe((habit: Habit) => {
-      this.addHabit(habit);
+    this.service.habitShared$.subscribe((habitName: string) => {
+      this.addHabit(habitName);
     });
   }
 
   loadHabitData() {
-    const data = localStorage.getItem('habitData');
-    if (data) {
-      this.habits = JSON.parse(data);
-    }
+    this.habits = this.service.getHabits();
   }
 
-  addHabit(newHabit: Habit) {
-    this.habits.push(newHabit);
-    this.saveHabitData();
+  addHabit(newHabit: string) {
+    this.service.createNewHabit(newHabit).subscribe({
+      next: (habit) => {
+        this.loadHabitData();
+      },
+    });
   }
 
   toggleDayStatus(habit: any, day: any) {
     day.completed = !day.completed;
-    this.saveHabitData();
+    this.service.updateHabit(habit).subscribe({
+      next: () => {
+        this.loadHabitData();
+      },
+    });
   }
 
   saveHabitData() {
