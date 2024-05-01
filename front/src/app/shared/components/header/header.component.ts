@@ -21,22 +21,8 @@ export class HeaderComponent {
       this.placeholderContent = 'Please, add a valid new habit';
       return;
     }
-
-    const newHabit = this.createHabit(habitName);
-    this.service.emitHabit(newHabit);
+    this.service.emitHabit(habitName);
     this.resetPlaceholder();
-  }
-
-  createHabit(habitName: string): Habit {
-    return { name: habitName, days: this.initializeDays(30) };
-  }
-
-  initializeDays(numberOfDays: number) {
-    const days = [];
-    for (let i = 1; i <= numberOfDays; i++) {
-      days.push({ day: i, completed: false });
-    }
-    return days;
   }
 
   resetPlaceholder() {
