@@ -4,6 +4,7 @@ export interface DayControl {
 }
 
 export interface Habit {
+  id?: number;
   name: string;
   days: DayControl[];
 }
