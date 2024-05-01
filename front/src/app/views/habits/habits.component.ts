@@ -20,6 +20,8 @@ export class HabitsComponent {
     this.getNewHabit();
   }
 
+  edit() {}
+
   getNewHabit() {
     this.service.habitShared$.subscribe((habit: Habit) => {
       this.addHabit(habit);
