@@ -1,17 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Habit } from '../models/interfaces';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceService {
-  private habitSubject = new Subject<Habit>();
+  private apiUrl = 'http://localhost:3000/habits';
+  private habitSubject = new Subject<string>();
   habitShared$ = this.habitSubject.asObservable();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  emitHabit(habit: Habit) {
+  createNewHabit(habit: string): Observable<Habit> {
+    return this.http.post<Habit>(this.apiUrl, { name: habit });
+  }
+
+  getHabits(): Observable<Habit[]> {
+    return this.http.get<Habit[]>(this.apiUrl);
+  }
+
+  updateHabit(habit: Habit): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${habit.id}`, habit);
+  }
+
+  emitHabit(habit: string) {
     this.habitSubject.next(habit);
   }
 }
