@@ -1,10 +1,14 @@
 <div class="habits" *ngFor="let habit of habits | async; let h = index">
     <section>
-        <p class="habits__habit">{{ habit.name }}</p>
+
+        <p class="habits__habit">
+            <i class='bx bxs-trash'></i>
+            <input type="text" [value]="habit.name" [(ngModel)]="habit.name" (ngModelChange)="edit(habit)" />
+        </p>
         <div class="habits__day-container">
             <div *ngFor="let day of habit.days; let d = index" class="habits__day"
                 [ngStyle]="{'background-color': day.completed ? '#000' : '#fff', 'color': day.completed ? '#fff' : '#000'}"
-                (click)="toggleDayStatus(habit, day)">
+                (click)="edit(habit, day)">
                 {{ day.day }}
             </div>
         </div>

@@ -15,13 +15,18 @@
     width: 180px;
     padding-bottom: 10px;
 
-    text-transform: uppercase;
-    white-space: nowrap;
     display: flex;
     align-items: center;
 
     &:hover {
       cursor: pointer;
+    }
+
+    input {
+      max-width: 108px;
+      border: none;
+      text-transform: uppercase;
+      font-size: 18px;
     }
   }
 

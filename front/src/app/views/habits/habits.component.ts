@@ -1,18 +1,14 @@
 import { NgFor, NgStyle, AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { ServiceService } from '../../service/service.service';
-import { Habit } from '../../models/interfaces';
+import { DayControl, Habit } from '../../models/interfaces';
 import { Observable } from 'rxjs';
-import {
-  HttpClient,
-  HttpClientModule,
-  provideHttpClient,
-} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-habits',
   standalone: true,
-  imports: [NgStyle, NgFor, AsyncPipe],
+  imports: [NgStyle, NgFor, AsyncPipe, FormsModule],
 
   templateUrl: './habits.component.html',
   styleUrl: './habits.component.scss',
@@ -26,8 +22,6 @@ export class HabitsComponent {
     this.loadHabitData();
     this.getNewHabit();
   }
-
-  edit() {}
 
   getNewHabit() {
     this.service.habitShared$.subscribe((habitName: string) => {
@@ -47,8 +41,10 @@ export class HabitsComponent {
     this.habits = this.service.getHabits();
   }
 
-  toggleDayStatus(habit: any, day: any) {
-    day.completed = !day.completed;
+  edit(habit: Habit, day?: DayControl) {
+    if (day) {
+      day.completed = !day.completed;
+    }
     this.service.updateHabit(habit).subscribe();
   }
 }
