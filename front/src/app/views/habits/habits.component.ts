@@ -35,10 +35,6 @@ export class HabitsComponent {
     });
   }
 
-  loadHabitData() {
-    this.habits = this.service.getHabits();
-  }
-
   addHabit(newHabit: string) {
     this.service.createNewHabit(newHabit).subscribe({
       next: (habit) => {
@@ -47,16 +43,12 @@ export class HabitsComponent {
     });
   }
 
-  toggleDayStatus(habit: any, day: any) {
-    day.completed = !day.completed;
-    this.service.updateHabit(habit).subscribe({
-      next: () => {
-        this.loadHabitData();
-      },
-    });
+  loadHabitData() {
+    this.habits = this.service.getHabits();
   }
 
-  saveHabitData() {
-    localStorage.setItem('habitData', JSON.stringify(this.habits));
+  toggleDayStatus(habit: any, day: any) {
+    day.completed = !day.completed;
+    this.service.updateHabit(habit).subscribe();
   }
 }
