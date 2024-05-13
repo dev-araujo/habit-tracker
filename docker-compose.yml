@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./back
+    container_name: backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./back:/usr/src/app
+    command: ["npm", "run", "dev"] 
+
+
+  frontend:
+    build:
+      context: ./front
+    container_name: frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./front:/usr/src/app
