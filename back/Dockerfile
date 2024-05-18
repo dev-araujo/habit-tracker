@@ -1,5 +1,4 @@
-#  imagem base oficial do Node.js
-FROM node:14
+FROM node:18
 
 WORKDIR /usr/src/app
 
@@ -11,8 +10,4 @@ COPY . .
 
 EXPOSE 3000
 
-# Sem nodemon
-# CMD ["npm", "start"] 
-
-# Com nodemon
-CMD ["npm", "run", "dev"] 
+CMD ["node", "server.js"]
