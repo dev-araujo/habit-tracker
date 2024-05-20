@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ServiceService } from '../../../service/service.service';
-import { Habit } from '../../../models/interfaces';
 import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
@@ -11,9 +10,9 @@ import { NgClass, NgStyle } from '@angular/common';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  private service = inject(ServiceService);
   placeholderContent = 'Add new habit';
   isError = false;
-  constructor(private service: ServiceService) {}
 
   addHabit(habitName: string) {
     if (!habitName) {

@@ -1,16 +1,18 @@
-<div class="habits" *ngFor="let habit of habits | async; let h = index">
-    <section>
+@for (habit of habits | async; track habit.days) {
 
+<div class="habits">
+    <section>
         <p class="habits__habit">
             <i class='bx bxs-trash'></i>
             <input type="text" [value]="habit.name" [(ngModel)]="habit.name" (ngModelChange)="edit(habit)" />
         </p>
         <div class="habits__day-container">
-            <div *ngFor="let day of habit.days; let d = index" class="habits__day"
-                [ngStyle]="{'background-color': day.completed ? '#000' : '#fff', 'color': day.completed ? '#fff' : '#000'}"
-                (click)="edit(habit, day)">
+            @for ( day of habit.days; track day.completed;) {
+            <div class="habits__day" [ngStyle]="checkedStyle(day.completed)" (click)="edit(habit, day)">
                 {{ day.day }}
             </div>
+            }
         </div>
     </section>
 </div>
+}

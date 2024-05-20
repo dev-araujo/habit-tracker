@@ -1,9 +1,10 @@
 import { NgFor, NgStyle, AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ServiceService } from '../../service/service.service';
 import { DayControl, Habit } from '../../models/interfaces';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { checkedStyle } from '../../shared/utils/style';
 
 @Component({
   selector: 'app-habits',
@@ -14,9 +15,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './habits.component.scss',
 })
 export class HabitsComponent {
+  private service = inject(ServiceService);
   habits = new Observable<Habit[]>();
-
-  constructor(private service: ServiceService) {}
+  checkedStyle = checkedStyle;
 
   ngOnInit() {
     this.loadHabitData();
@@ -47,4 +48,6 @@ export class HabitsComponent {
     }
     this.service.updateHabit(habit).subscribe();
   }
+
+  deleteHabit(id: any) {}
 }

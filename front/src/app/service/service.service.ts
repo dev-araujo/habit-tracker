@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Habit } from '../models/interfaces';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,7 @@ export class ServiceService {
   private habitSubject = new Subject<string>();
   habitShared$ = this.habitSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   createNewHabit(habit: string): Observable<Habit> {
     return this.http.post<Habit>(this.apiUrl, { name: habit });
