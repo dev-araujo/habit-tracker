@@ -8,3 +8,8 @@ export interface Habit {
   name: string;
   days: DayControl[];
 }
+
+export interface ResEdited {
+  data: Habit;
+  message: string;
+}

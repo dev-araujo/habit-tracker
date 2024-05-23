@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Habit } from '../models/interfaces';
+import { Habit, ResEdited } from '../models/interfaces';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -21,8 +21,12 @@ export class ServiceService {
     return this.http.get<Habit[]>(this.apiUrl);
   }
 
-  updateHabit(habit: Habit): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${habit.id}`, habit);
+  updateHabit(habit: Habit): Observable<ResEdited> {
+    return this.http.put<ResEdited>(`${this.apiUrl}/${habit.id}`, habit);
+  }
+
+  deleteHabit(id: string): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
   }
 
   emitHabit(habit: string) {

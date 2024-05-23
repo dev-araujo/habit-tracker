@@ -32,7 +32,7 @@ export class HabitsComponent {
 
   addHabit(newHabit: string) {
     this.service.createNewHabit(newHabit).subscribe({
-      next: (habit) => {
+      next: () => {
         this.loadHabitData();
       },
     });
@@ -49,5 +49,11 @@ export class HabitsComponent {
     this.service.updateHabit(habit).subscribe();
   }
 
-  deleteHabit(id: any) {}
+  deleteHabit(id: any) {
+    this.service.deleteHabit(id).subscribe({
+      next: () => {
+        this.loadHabitData();
+      },
+    });
+  }
 }
