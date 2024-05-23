@@ -3,12 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HabitsComponent } from './views/habits/habits.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { provideHttpClient } from '@angular/common/http';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HabitsComponent, HeaderComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HabitsComponent,
+    HeaderComponent,
+    ModalComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

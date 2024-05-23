@@ -5,17 +5,21 @@ import { DayControl, Habit } from '../../models/interfaces';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { checkedStyle } from '../../shared/utils/style';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-habits',
   standalone: true,
-  imports: [NgStyle, NgFor, AsyncPipe, FormsModule],
+  imports: [NgStyle, NgFor, AsyncPipe, FormsModule, MatDialogModule],
 
   templateUrl: './habits.component.html',
   styleUrl: './habits.component.scss',
 })
 export class HabitsComponent {
   private service = inject(ServiceService);
+  private modal = inject(MatDialog);
+
   habits = new Observable<Habit[]>();
   checkedStyle = checkedStyle;
 
