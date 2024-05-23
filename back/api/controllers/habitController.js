@@ -56,7 +56,7 @@ exports.updateHabit = (req, res) => {
       res.status(400).json({ error: err.message });
       return;
     }
-    res.json({ message: "success", data: data, changes: this.changes });
+    res.json({ message: "success", data: data });
   });
 };
 
@@ -68,6 +68,6 @@ exports.deleteHabit = (req, res) => {
       res.status(400).json({ error: res.message });
       return;
     }
-    res.json({ message: "deleted", changes: this.changes });
+    res.json({ message: "deleted" });
   });
 };
