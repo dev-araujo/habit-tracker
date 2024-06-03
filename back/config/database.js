@@ -12,9 +12,11 @@ const db = new sqlite3.Database(
 
     db.run(
       `CREATE TABLE IF NOT EXISTS habits (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT,
-      days TEXT
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        days TEXT,
+        month INTEGER,
+        year INTEGER
     )`,
       (err) => {
         if (err) {

@@ -7,25 +7,48 @@ function jsonParse(data) {
 function jsonStringify(data) {
   return { ...data, days: JSON.stringify(data.days) };
 }
+function getDaysInMonth(year, month) {
+  return new Date(year, month, 0).getDate();
+}
+
 const sql = "SELECT * FROM habits";
 const params = [];
 
 exports.getHabits = (req, res) => {
-  db.all(sql, params, (err, rows) => {
+  const currentDate = new Date();
+  const currentDay = currentDate.getDate();
+
+  db.all("SELECT * FROM habits", [], (err, rows) => {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
     }
-    res.json(rows.map(jsonParse));
+    const processedRows = rows.map((row) => {
+      const days = JSON.parse(row.days).map((day) => ({
+        ...day,
+        blocked: day.day < currentDay && !day.blocked ? true : day.blocked,
+      }));
+      return { ...row, days: days };
+    });
+    res.json(processedRows);
   });
 };
 
 exports.addHabit = (req, res) => {
   const { name } = req.body;
+  const currentDate = new Date();
+  const currentDay = currentDate.getDate();
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
+  const daysInMonth = getDaysInMonth(year, month);
   const days = [];
 
-  for (let i = 1; i <= 30; i++) {
-    days.push({ day: i, completed: false });
+  for (let i = 1; i <= daysInMonth; i++) {
+    days.push({
+      day: i,
+      completed: false,
+      blocked: i < currentDay,
+    });
   }
 
   const data = { name, days: JSON.stringify(days) };
