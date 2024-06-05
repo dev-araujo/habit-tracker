@@ -1,9 +1,5 @@
 const db = require("../../config/database");
 
-function jsonParse(data) {
-  return { ...data, days: JSON.parse(data.days) };
-}
-
 function jsonStringify(data) {
   return { ...data, days: JSON.stringify(data.days) };
 }
@@ -11,14 +7,14 @@ function getDaysInMonth(year, month) {
   return new Date(year, month, 0).getDate();
 }
 
-const sql = "SELECT * FROM habits";
-const params = [];
-
 exports.getHabits = (req, res) => {
   const currentDate = new Date();
   const currentDay = currentDate.getDate();
 
-  db.all("SELECT * FROM habits", [], (err, rows) => {
+  const sql = "SELECT * FROM habits";
+  const params = [];
+
+  db.all(sql, params, (err, rows) => {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
