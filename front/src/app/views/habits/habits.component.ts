@@ -1,4 +1,4 @@
-import { NgFor, NgStyle, AsyncPipe } from '@angular/common';
+import { NgFor, NgStyle, AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ServiceService } from '../../service/service.service';
 import { DayControl, Habit } from '../../models/interfaces';
@@ -11,14 +11,14 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 @Component({
   selector: 'app-habits',
   standalone: true,
-  imports: [NgStyle, NgFor, AsyncPipe, FormsModule, MatDialogModule],
+  imports: [NgStyle, NgFor, AsyncPipe, FormsModule, MatDialogModule, NgClass],
 
   templateUrl: './habits.component.html',
   styleUrl: './habits.component.scss',
 })
 export class HabitsComponent {
   private service = inject(ServiceService);
-  private modal = inject(MatDialog);
+  private dialog = inject(MatDialog);
 
   habits = new Observable<Habit[]>();
   checkedStyle = checkedStyle;
@@ -54,10 +54,15 @@ export class HabitsComponent {
   }
 
   deleteHabit(id: any) {
-    this.service.deleteHabit(id).subscribe({
-      next: () => {
-        this.loadHabitData();
-      },
+    const dialogRef = this.dialog.open(ModalComponent, {
+      height: '200px',
+      width: '280px',
     });
+
+    // this.service.deleteHabit(id).subscribe({
+    //   next: () => {
+    //     this.loadHabitData();
+    //   },
+    // });
   }
 }
