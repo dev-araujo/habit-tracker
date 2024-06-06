@@ -1,6 +1,7 @@
 export interface DayControl {
   completed: boolean;
   day: number;
+  blocked: boolean;
 }
 
 export interface Habit {
