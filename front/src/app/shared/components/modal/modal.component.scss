@@ -1,0 +1,21 @@
+.modal {
+  .bxs-trash {
+    position: relative;
+    right: 2px;
+    top: 2px;
+  }
+  b {
+    color: black;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: end;
+
+    button {
+      margin-right: 6px;
+    }
+  }
+}

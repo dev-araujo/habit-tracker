@@ -1,10 +1,13 @@
-<section>
-    <h2 mat-dialog-title>Delete Taks</h2>
+<section class="modal">
+    <h2 mat-dialog-title><i class='bx bxs-trash'></i>Delete Taks</h2>
     <mat-dialog-content>
-        <h3>Do you want delete your task</h3>
-
+        <h3>Do you want <b>delete</b> your task ?</h3>
     </mat-dialog-content>
 
-    <button mat-button (click)="action(false)" cdkFocusInitial>No Thanks</button>
-    <button mat-button (click)="action(true)">Yes</button>
+    <mat-dialog-content class="modal__actions">
+        <button mat-button mat-stroked-button (click)="action(false)" cdkFocusInitial>
+            No Thanks
+        </button>
+        <button mat-button mat-stroked-button (click)="action(true)">Yes</button>
+    </mat-dialog-content>
 </section>
