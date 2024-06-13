@@ -54,15 +54,19 @@ export class HabitsComponent {
   }
 
   deleteHabit(id: any) {
-    const dialogRef = this.dialog.open(ModalComponent, {
+    const dialog = this.dialog.open(ModalComponent, {
       height: '200px',
       width: '280px',
     });
 
-    // this.service.deleteHabit(id).subscribe({
-    //   next: () => {
-    //     this.loadHabitData();
-    //   },
-    // });
+    dialog.afterClosed().subscribe((del: boolean) => {
+      if (del) {
+        this.service.deleteHabit(id).subscribe({
+          next: () => {
+            this.loadHabitData();
+          },
+        });
+      }
+    });
   }
 }
