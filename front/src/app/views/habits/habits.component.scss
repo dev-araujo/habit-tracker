@@ -11,6 +11,10 @@
   }
 
   &__habit {
+    .bx-trash-alt {
+      font-size: 18px;
+    }
+
     height: 30px;
     width: 180px;
     padding-bottom: 10px;
