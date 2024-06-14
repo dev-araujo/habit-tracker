@@ -2,9 +2,6 @@ const db = require("../../config/database");
 const HabitUtils = require("../utils/HabitUtils");
 
 exports.getHabits = (req, res) => {
-  const currentDate = new Date();
-  const currentDay = currentDate.getDate();
-
   const sql = "SELECT * FROM habits";
   const params = [];
 
@@ -16,7 +13,7 @@ exports.getHabits = (req, res) => {
     const processedRows = rows.map((row) => {
       const days = JSON.parse(row.days).map((day) => ({
         ...day,
-        blocked: day.day < currentDay && !day.blocked ? true : day.blocked,
+        blocked: day.blocked,
       }));
       return { ...row, days: days };
     });
