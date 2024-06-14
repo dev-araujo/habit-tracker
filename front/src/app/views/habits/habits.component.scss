@@ -7,7 +7,8 @@
   section {
     display: flex;
     align-items: center;
-    width: 1366px;
+    justify-content: center;
+    width: 2000px;
   }
 
   &__habit {
@@ -17,7 +18,6 @@
 
     height: 30px;
     width: 180px;
-    padding-bottom: 10px;
 
     display: flex;
     align-items: center;
@@ -27,7 +27,7 @@
     }
 
     input {
-      max-width: 200px;
+      max-width: 140px;
       border: none;
       text-transform: uppercase;
       font-size: 18px;
