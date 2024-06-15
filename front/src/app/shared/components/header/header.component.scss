@@ -1,10 +1,15 @@
+$color-background: rgba(245, 206, 30, 0.11);
+$color-placeholder-red: rgba(219, 56, 56, 0.911);
+$font-archivo-black: "Archivo Black", sans-serif;
+$font-montserrat: "Montserrat", sans-serif;
+$color-black: black;
+$color-white: white;
+
 .topnavbar {
   width: auto;
   height: 80px;
   padding: 1rem;
-
-  background: rgba(245, 206, 30, 0.11);
-
+  background: $color-background;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,12 +21,12 @@
     width: 800px;
 
     h2 {
-      font-family: "Archivo Black", sans-serif;
+      font-family: $font-archivo-black;
       font-weight: 400;
     }
 
     h1 {
-      font-family: "Montserrat", sans-serif;
+      font-family: $font-montserrat;
       font-weight: 800;
       font-size: 34px;
     }
@@ -36,33 +41,33 @@
     input {
       border: 0.5px solid rgba(0, 0, 0, 0.5);
       height: 32px;
-      padding: 2px 14px 2px 14px;
+      padding: 2px 14px;
       outline: 0;
-    }
 
-    .placeholder-red::placeholder {
-      color: rgba(219, 56, 56, 0.911);
-    }
+      &.placeholder-red::placeholder {
+        color: $color-placeholder-red;
+      }
 
-    .placeholder-blue::placeholder {
-      color: auto;
+      &.placeholder-blue::placeholder {
+        color: auto;
+      }
     }
 
     button {
-      background: black;
-      color: white;
-      border: black 2px solid;
-
+      background: $color-black;
+      color: $color-white;
+      border: 2px solid $color-black;
       height: 36px;
-      padding: 6px 20px 6px 20px;
+      padding: 6px 20px;
       font-weight: 600;
 
       &:hover {
-        background: white;
-        color: black;
+        background: $color-white;
+        color: $color-black;
         cursor: pointer;
       }
     }
+
     .plus {
       display: inline-block;
       transition: transform 0.3s ease;
@@ -81,5 +86,55 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1136px) {
+  .topnavbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+
+    &__titles {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+
+    &__actions {
+      width: 100%;
+      margin-top: 10px;
+
+      input {
+        width: 58%;
+        margin-right: 2%;
+      }
+
+      button {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .topnavbar {
+    margin: 0;
+
+    &__actions {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      input,
+      button {
+        width: 80%;
+        margin: 0 auto 10px;
+      }
+    }
   }
 }
