@@ -9,7 +9,8 @@
         <input [ngClass]="{'placeholder-red': isError, 'placeholder-blue': !isError}" maxlength="18" #newHabitInput
             type="text" [placeholder]="placeholderContent" />
 
-        <button type="submit" (click)="addHabit(newHabitInput.value); newHabitInput.value = ''">
+        <button type="submit" [disabled]="!newHabitInput.value"
+            (click)="addHabit(newHabitInput.value); newHabitInput.value = ''">
             <span class="plus">+</span> Add Habit
         </button>
     </form>
