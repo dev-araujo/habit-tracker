@@ -1,11 +1,21 @@
+$padding-top: 1rem;
+$habit-width: 180px;
+$habit-height: 30px;
+$day-size: 30px;
+$font-size: 18px;
+$input-max-width: 140px;
+$mobile-width: 1136px;
+$font-archivo-black: "Archivo Black", sans-serif;
+$font-montserrat: "Montserrat", sans-serif;
+
 .container {
-  padding-top: 1rem;
+  padding-top: $padding-top;
 }
 
 .habits {
   display: flex;
   justify-content: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: $font-montserrat;
   width: 100vw;
 
   section {
@@ -19,12 +29,11 @@
 
   &__habit {
     .bx-trash-alt {
-      font-size: 18px;
+      font-size: $font-size;
     }
 
-    height: 30px;
-    width: 180px;
-
+    height: $habit-height;
+    width: $habit-width;
     display: flex;
     align-items: center;
 
@@ -33,10 +42,12 @@
     }
 
     input {
-      max-width: 140px;
+      max-width: $input-max-width;
       border: none;
       text-transform: uppercase;
-      font-size: 18px;
+      font-size: $font-size;
+      margin: 10px 5px;
+      padding: 5px;
 
       &:hover {
         border: 2px solid black;
@@ -51,8 +62,8 @@
   }
 
   &__day {
-    width: 30px;
-    height: 30px;
+    width: $day-size;
+    height: $day-size;
     border-radius: 50%;
     margin: 5px;
     display: flex;
@@ -60,18 +71,9 @@
     align-items: center;
     cursor: pointer;
   }
-
-  input {
-    margin: 10px 5px;
-    padding: 5px;
-  }
-
-  button {
-    padding: 5px 10px;
-  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $mobile-width) {
   .habits {
     flex-direction: column;
     align-items: stretch;
