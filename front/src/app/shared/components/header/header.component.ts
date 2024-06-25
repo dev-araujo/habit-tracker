@@ -1,18 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { ServiceService } from '../../../service/service.service';
-import { NgClass, NgStyle } from '@angular/common';
+import { JsonPipe, NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgStyle, NgClass],
+  imports: [NgStyle, NgClass, JsonPipe],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   private service = inject(ServiceService);
   placeholderContent = 'Add new habit';
   isError = false;
+  newHabitValue = '';
 
   addHabit(habitName: string) {
     if (!habitName) {
@@ -26,7 +27,10 @@ export class HeaderComponent {
 
   resetPlaceholder() {
     this.isError = false;
-
     this.placeholderContent = 'Add new habit';
+  }
+
+  onInputChange(value: string) {
+    this.newHabitValue = value;
   }
 }

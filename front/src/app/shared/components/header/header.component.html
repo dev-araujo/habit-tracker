@@ -1,16 +1,15 @@
 <header class="topnavbar">
     <section class="topnavbar__titles">
         <h2>KEEP~HABITS</h2>
-
         <h1>DEVELOPMENT YOUR HABITS</h1>
     </section>
 
     <form class="topnavbar__actions">
-        <input [ngClass]="{'placeholder-red': isError, 'placeholder-blue': !isError}" maxlength="18" #newHabitInput
-            type="text" [placeholder]="placeholderContent" />
-
-        <button type="submit" [disabled]="!newHabitInput.value"
-            (click)="addHabit(newHabitInput.value); newHabitInput.value = ''">
+        <input [ngClass]="{ 'placeholder-red': isError, 'placeholder-blue': !isError }" maxlength="18" #newHabitInput
+            type="text" [placeholder]="placeholderContent" (input)="onInputChange(newHabitInput.value)" />
+        <button type="submit" [disabled]="!newHabitValue"
+            [ngClass]="newHabitValue ? 'header-button' : 'header-button--disabled'"
+            (click)="addHabit(newHabitValue); newHabitInput.value = ''">
             <span class="plus">+</span> Add Habit
         </button>
     </form>
