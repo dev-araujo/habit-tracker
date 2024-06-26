@@ -3,7 +3,8 @@
 
 ## 💻 Projeto
 
-#### Um projeto para criar, acompanhar e manter hábitos diários.
+#### Um habit tracker minimalista de uso pessoal, para criar, acompanhar e manter hábitos diários.
+
 
 <h2>Mobile 📱</h2>
 <h1 align="center">
