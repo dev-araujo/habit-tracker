@@ -89,6 +89,10 @@ $font-montserrat: "Montserrat", sans-serif;
 
     &__habit {
       width: 90%;
+
+      input {
+        width: 100%;
+      }
     }
 
     &__day-container {
