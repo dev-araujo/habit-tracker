@@ -49,6 +49,10 @@ $font-montserrat: "Montserrat", sans-serif;
       margin: 10px 5px;
       padding: 5px;
 
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
       &:hover {
         border: 2px solid black;
         border-radius: 3px;

@@ -5,7 +5,8 @@
         <section>
             <p class="habits__habit">
                 <i class='bx bx-trash-alt' (click)="deleteHabit(habit.id)"></i>
-                <input type="text" [value]="habit.name" [(ngModel)]="habit.name" (ngModelChange)="edit(habit)" />
+                <input type="text" [value]="habit.name" [(ngModel)]="habit.name" (ngModelChange)="edit(habit)"
+                    [title]="habit.name" />
             </p>
             <div class="habits__day-container">
                 @for ( day of habit.days; track day.completed;) {
