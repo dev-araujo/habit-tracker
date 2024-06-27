@@ -12,15 +12,14 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
   selector: 'app-habits',
   standalone: true,
   imports: [NgStyle, NgFor, AsyncPipe, FormsModule, MatDialogModule, NgClass],
-
   templateUrl: './habits.component.html',
-  styleUrl: './habits.component.scss',
+  styleUrls: ['./habits.component.scss'],
 })
 export class HabitsComponent {
   private service = inject(ServiceService);
   private dialog = inject(MatDialog);
 
-  habits = new Observable<Habit[]>();
+  habits: Observable<Habit[]> = new Observable<Habit[]>();
   checkedStyle = checkedStyle;
 
   ngOnInit() {
@@ -68,5 +67,13 @@ export class HabitsComponent {
         });
       }
     });
+  }
+
+  trackByHabit(index: number, habit: Habit): number | undefined {
+    return index;
+  }
+
+  trackByDay(index: number, day: DayControl): number {
+    return index;
   }
 }
