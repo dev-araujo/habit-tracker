@@ -94,7 +94,7 @@ docker run -p 4200:4200 frontend-habits
 
 <details><summary> <h2>Instruções para rodar com Docker-Compose🐙</h2></summary>
 
-Construa e execute o projeto com Docker Compose para um setup mais fácil incluindo backend e frontend:
+Execute
 
 ```
 docker-compose up -d
