@@ -34,7 +34,7 @@
 
 No terminal, clone o projeto:
 ```
-git clone https://seu-repositorio-aqui.git
+git clone https://github.com/dev-araujo/habit-tracker.git
 ```
 
 ### Configuração do Backend
