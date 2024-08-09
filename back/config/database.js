@@ -10,19 +10,23 @@ const db = new sqlite3.Database(
     }
     console.log("Conectado ao banco de dados SQLite.");
 
+    // Verifica e adiciona colunas se não existirem
     db.run(
       `CREATE TABLE IF NOT EXISTS habits (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         days TEXT,
-        month INTEGER,
-        year INTEGER
-    )`,
+        createdAt TEXT,
+        endDate TEXT
+      )`,
       (err) => {
         if (err) {
-          console.error("Erro ao criar a tabela 'habits':", err.message);
+          console.error(
+            "Erro ao criar ou alterar a tabela 'habits':",
+            err.message
+          );
         } else {
-          console.log("Tabela 'habits' criada ou já existente.");
+          console.log("Tabela 'habits' verificada ou criada.");
         }
       }
     );

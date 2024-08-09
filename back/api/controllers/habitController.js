@@ -10,12 +10,14 @@ exports.getHabits = (req, res) => {
       res.status(400).json({ error: err.message });
       return;
     }
+
     const processedRows = rows.map((row) => {
-      const days = JSON.parse(row.days).map((day) => ({
-        ...day,
-        blocked: day.blocked,
-      }));
-      return { ...row, days: days };
+      return {
+        ...row,
+        days: JSON.parse(row.days),
+        createdAt: row.createdAt,
+        endDate: row.endDate,
+      };
     });
     res.json(processedRows);
   });
@@ -24,24 +26,27 @@ exports.getHabits = (req, res) => {
 exports.addHabit = (req, res) => {
   const { name } = req.body;
   const currentDate = new Date();
-  const month = currentDate.getMonth() + 1;
-  const year = currentDate.getFullYear();
 
-  const days = HabitUtils.getInitialDays(month, year);
+  const days = HabitUtils.getInitialDays();
+  const createdAt = currentDate.toISOString();
+  const endDate = new Date(
+    currentDate.getTime() + 15 * 24 * 60 * 60 * 1000
+  ).toISOString();
 
-  const data = { name, days: JSON.stringify(days) };
+  const data = { name, days: JSON.stringify(days), createdAt, endDate };
 
-  const sql = "INSERT INTO habits (name, days) VALUES (?, ?)";
-  const params = [data.name, data.days];
+  const sql =
+    "INSERT INTO habits (name, days, createdAt, endDate) VALUES (?, ?, ?, ?)";
+  const params = [data.name, data.days, data.createdAt, data.endDate];
 
-  db.run(sql, params, (err) => {
+  db.run(sql, params, function (err) {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
     }
     res.json({
       message: "success",
-      data: { id: this.lastID, name, days },
+      data: { id: this.lastID, name, days, createdAt, endDate },
     });
   });
 };
