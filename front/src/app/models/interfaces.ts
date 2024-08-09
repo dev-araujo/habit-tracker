@@ -1,13 +1,14 @@
 export interface DayControl {
   completed: boolean;
   day: number;
-  blocked: boolean;
 }
 
 export interface Habit {
   id?: number;
   name: string;
   days: DayControl[];
+  createdAt: Date | string;
+  endDate: Date | string;
 }
 
 export interface ResEdited {

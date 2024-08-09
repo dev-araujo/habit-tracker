@@ -10,8 +10,7 @@
             </p>
             <div class="habits__day-container">
                 @for ( day of habit.days; track day.day;) {
-                <div class="habits__day" [ngStyle]="checkedStyle(day.completed, day.blocked)"
-                    (click)="edit(habit, day)">
+                <div class="habits__day" [ngStyle]="checkedStyle(day.completed)" (click)="edit(habit, day)">
                     {{ day.day }}
                 </div>
                 }
