@@ -99,6 +99,11 @@ Execute
 ```
 docker-compose up -d
 ```
+ou
+
+```
+docker compose up -d
+```
 
 Isso iniciará ambos, o frontend no `http://localhost:4200` e o backend no `http://localhost:3000`.
 
